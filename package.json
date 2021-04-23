@@ -1,0 +1,27 @@
+{
+  "name": "mssdashboard",
+  "version": "1.0.0",
+  "description": "Demonstrate streaming data and reporting with Kafka",
+  "main": "client/index.js",
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "server": "cd server && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [
+    "nextjs",
+    "nodejs",
+    "mongo",
+    "auth"
+  ],
+  "author": "MSS LABS",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "concurrently": "^6.0.1"
+  }
+}
