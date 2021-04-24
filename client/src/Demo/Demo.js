@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react"
 import "./Chat.css"
 import Message from "./Message"
-import socketIOClient from "socket.io-client"
-const socket = socketIOClient("http://localhost:5000")
+import {io} from "socket.io-client"
+const socket = io("http://localhost:5000", { path: '/', transports: ["websocket"], upgrade: false })
 
 export default () => {
-  const [userName, setUserName] = useState("")
+  const [userName, setUserName] = useState("MSS")
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState([])
 
-  useEffect(() => {
-    const uName = prompt("Name?")
-    if (uName) {
-      setUserName(uName)
-    }
-  }, [])
+  useEffect(() => {})
+    
 
   socket.on("message", message => {
     setMessages([...messages, message])
