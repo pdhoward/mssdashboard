@@ -11,29 +11,21 @@ const socket = new W3CWebSocket('ws://127.0.0.1:5000');
 export default () => {
   const [userName, setUserName] = useState("MSS")
   const [message, setMessage] = useState("")
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([{}])
 
   useEffect(() => {
     socket.onopen = () => {
       console.log('WebSocket Client Connected');
     };
-    socket.onmessage = (message) => {
-      setMessages([...messages, message])
+    socket.onmessage = (message) => { 
+      let data = JSON.parse(message.data)
+      console.log(messages)
+      console.log(data)      
+      setMessages([...messages, ...data])     
     };
-  }, [])
+  })
+  useEffect(() => () => socket.onclose = () => console.log(`socket closed`), [socket])
     
-
-  // socket.on("message", message => {
-  //   setMessages([...messages, message])
-  // })
-  // componentWillMount() { 
-  //     socket.onopen = () => {
-  //     console.log('WebSocket Client Connected');
-  //   };
-  //  socket.onmessage = (message) => {
-  //     console.log(message);
-  //   };
-  // }
 
   return (
     <div className="wrapper">
@@ -45,8 +37,8 @@ export default () => {
           {messages.map((msg, index) => (
             <Message
               key={index}
-              userName={msg.userName}
-              message={msg.message}
+              userName={msg.seq}
+              message={msg.price}
             />
           ))}
         </div>
