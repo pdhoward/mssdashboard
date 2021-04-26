@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import moment from 'moment'
-// import PropTypes from 'prop-types'
+
 import {
   makeStyles,
   Box,
@@ -19,12 +19,28 @@ import {
   Paper,
 } from '@material-ui/core'
 import { Notes as IconNotes, MoreVert as IconMoreVert } from '@material-ui/icons'
-//import { FormattedDate } from 'react-intl'
-
 import { recentSubscriptions } from './data'
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+const socket = new W3CWebSocket('ws://127.0.0.1:5000');
 
 const Subscriptions = props => {
   const classes = useStyles()
+
+  const [userName, setUserName] = useState("MSS")
+  const [message, setMessage] = useState("")
+  const [messages, setMessages] = useState([{}])
+
+  useEffect(() => {
+    socket.onopen = () => {
+      console.log('WebSocket Client Connected');
+    };
+    socket.onmessage = (message) => { 
+      let data = JSON.parse(message.data)
+      console.log(messages)
+      console.log(data)    
+      setMessages([...messages, ...data])     
+    };
+  })
 
   return (
     <Grid item xs={12} sm={12} md={6}>
@@ -37,28 +53,28 @@ const Subscriptions = props => {
               <IconMoreVert />
             </IconButton>
           }
-          title="Recent Subscriptions"
+          title="Recent Product Sales"
         />
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Organization</TableCell>
-                <TableCell align="right">Users</TableCell>
-                <TableCell align="right">Plan</TableCell>
+                <TableCell>Product</TableCell>
+                <TableCell align="right">Unit Sales</TableCell>
+                <TableCell align="right">Price</TableCell>
                 <TableCell align="right">Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {recentSubscriptions.map(subscription => (
-                <TableRow key={subscription.organization}>
+              {messages.map(m => (
+                <TableRow key={m.seq}>
                   <TableCell component="th" scope="row">
-                    {subscription.organization}
+                    {m.name}
                   </TableCell>
-                  <TableCell align="right">{subscription.numUsers}</TableCell>
-                  <TableCell align="right">{subscription.plan}</TableCell>
+                  <TableCell align="right">{m.unitsales}</TableCell>
+                  <TableCell align="right">{m.price}</TableCell>
                   <TableCell align="right">
-                    <p>{moment(subscription.date).format()}</p>
+                    <p>{moment(m.timestamp).format()}</p>
                   </TableCell>
                 </TableRow>
               ))}

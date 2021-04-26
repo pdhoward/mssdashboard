@@ -62,20 +62,56 @@ process.on('uncaughtException', function (er) {
        process.exit(1)
     })
   })
+
+///////////////////////////////////////////////////
+//////////////   STREAM         //////////////////
+/////////////////////////////////////////////////
+    const randomStream = (int) => {
+      let id
+      let x = 0
+      id = setInterval(async function() {
+          
+        // // kafka consumer - 
+        // try {
+        //   let result = await kafka(producer, tag)          
+        //   console.log(result, x)
+        // } catch (e) {
+        //   console.log(e)
+        // }
+            
+        // MOCK
+        let tag = {}
+        x++
+        tag.unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
+        tag.price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+        tag.seq = x
+        tag.name='New Product'
+        tag.timestamp = Date.now()
+        
+        // sockets
+        wss.clients.forEach((client) => {      
+          if (client.readyState === 1) {
+              client.send(JSON.stringify([tag]))
+          }
+        })
+
+        
+      }, int)
+    }
+
+    randomStream(1000)   
  
  /////////////////////////////////////////////////
  ///// Register and Config Routes ///////////////
  ///////////////////////////////////////////////
  const about =       express.Router()
- const header =      express.Router() 
- //const signal =       express.Router({mergeParams: true}) 
+ const header =      express.Router()  
  const test =        express.Router({mergeParams: true})
 
  const userRoutes = require('../routes/auth')
 
  require('../routes/about')(about)
  require('../routes/header')(header)
- //require('../routes/signal')(signal)
  require('../routes/test')(test)
 
 ///////////////////////////////////////////////////////////////
@@ -91,43 +127,6 @@ app.get('/about', about)
 
 app.use("/api/auth", [userRoutes])
 
-//app.use('/api/signals', [signal])
-
-/////////////////////////////////////////////////////
-//////////////   TESTING          //////////////////
-///////////////////////////////////////////////////
-const randomStream = (int) => {
-  let id
-  let x = 0
-  id = setInterval(async function() {
-      
-    // // kafka consumer - 
-    // try {
-    //   let result = await kafka(producer, tag)          
-    //   console.log(result, x)
-    // } catch (e) {
-    //   console.log(e)
-    // }
-         
-    // MOCK
-    let tag = {}
-    x++
-    tag.price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-    tag.seq = x
-    tag.name='MESSAGE'
-    
-    // sockets
-    wss.clients.forEach((client) => {      
-      if (client.readyState === 1) {
-          client.send(JSON.stringify([tag]))
-      }
-    })
-
-    
-  }, int)
-}
-
-randomStream(1000)   
 
 ///////////////////////////////////
 ///////     active servers ///////
