@@ -117,8 +117,7 @@ const randomStream = (int) => {
     tag.name='MESSAGE'
     
     // sockets
-    wss.clients.forEach((client) => {
-      console.log(client.readyState)
+    wss.clients.forEach((client) => {      
       if (client.readyState === 1) {
           client.send(JSON.stringify([tag]))
       }
