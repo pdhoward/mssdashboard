@@ -89,12 +89,24 @@ const fetchRandomTag = () => {
         resolve(data)
     })
 }
+
+// select a sample of subscribers
+const fetchRandomSubscriber = () => {
+    return new Promise(async (resolve, reject) => {  
+        let db = await conn(url)		
+		let Subscriber = db.model('Subscriber', subscriberSchema)  
+
+        let data = await Subscriber.aggregate([{$sample: {size: 1}}])
+        resolve(data)
+    })
+}
 module.exports = {    
     findVenue,
     findSubscriberAndUpdate,   
     fetchStoreSample,
     fetchTagSample,
     fetchSubscribers,
-    fetchRandomTag
+    fetchRandomTag,
+    fetchRandomSubscriber
 }
 

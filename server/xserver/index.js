@@ -4,14 +4,15 @@
 //////           c all rights reserved               ///////
 ///////////////////////////////////////////////////////////
 
-const express =               require('express')
-const cors =                  require('cors')
-const { createServer } =      require('http')
+const express =                 require('express')
+const cors =                    require('cors')
+const { createServer } =        require('http')
 const {kafka,  
-      fetchRandomTag} =       require('../controllers')
-const path =                  require('path')
-const transport =             require('../config/gmail')
-const { g, b, gr, r, y } =    require('../console');
+      fetchRandomTag,
+      fetchRandomSubscriber} =  require('../controllers')
+const path =                    require('path')
+const transport =               require('../config/gmail')
+const { g, b, gr, r, y } =      require('../console');
 
 const app = express()
 const server = createServer(app)
@@ -68,6 +69,7 @@ process.on('uncaughtException', function (er) {
 ///////////////////////////////////////////////////
 //////////////   STREAM         //////////////////
 /////////////////////////////////////////////////
+    const plans = ['Platinum', 'Gold', 'Silver', 'Bronze', 'Basic']
     const randomStream = (int) => {
       let id
       let x = 0
@@ -95,8 +97,11 @@ process.on('uncaughtException', function (er) {
               client.send(JSON.stringify(tag))
           }
         })
-
+        let subscriber = await fetchRandomSubscriber() 
         
+        subscriber[0].name = `${subscriber[0].firstName} ${subscriber[0].lastName}`
+        subscriber[0].plan = plans[Math.floor(Math.random() * plans.length)]
+        subscriber[0].location = `${subscriber[0].city}, ${subscriber[0].state}`
       }, int)
     }
 

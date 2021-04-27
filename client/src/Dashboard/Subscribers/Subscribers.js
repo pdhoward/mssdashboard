@@ -35,15 +35,15 @@ const Products = props => {
               <IconMoreVert />
             </IconButton>
           }
-          title="Recent Product Sales"
+          title="New Subscribers"
         />
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Product</TableCell>
-                <TableCell align="right">Unit Sales</TableCell>
-                <TableCell align="right">Price</TableCell>
+                <TableCell>Subscriber</TableCell>                
+                <TableCell align="right">Plan</TableCell>
+                <TableCell align="right">Location</TableCell>
                 <TableCell align="right">Time</TableCell>
               </TableRow>
             </TableHead>
@@ -53,7 +53,8 @@ const Products = props => {
                   <TableCell component="th" scope="row">
                     {m.name}
                   </TableCell>
-                  <TableCell align="right">{m.unitsales}</TableCell>
+                  <TableCell align="right">{m.plan}</TableCell>
+                  <TableCell align="right">{m.Location}</TableCell>
                   <TableCell align="right">{m.price}</TableCell>
                   <TableCell align="right">
                     <p>{dayjs(m.timestamp).format("h:mm:ss a")}</p>
