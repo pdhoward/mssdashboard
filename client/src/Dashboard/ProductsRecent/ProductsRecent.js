@@ -19,9 +19,8 @@ import {
   Paper,
 } from '@material-ui/core'
 import { Notes as IconNotes, MoreVert as IconMoreVert } from '@material-ui/icons'
-import { recentSubscriptions } from './data'
 
-const Subscriptions = props => {
+const Products = props => {
   const classes = useStyles()
   let messages = props.messages
 
@@ -74,7 +73,7 @@ const Subscriptions = props => {
   )
 }
 
-Subscriptions.propTypes = {}
+Products.propTypes = {}
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -98,4 +97,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default Subscriptions
+export default Products
