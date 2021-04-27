@@ -20,27 +20,10 @@ import {
 } from '@material-ui/core'
 import { Notes as IconNotes, MoreVert as IconMoreVert } from '@material-ui/icons'
 import { recentSubscriptions } from './data'
-import { w3cwebsocket as W3CWebSocket } from "websocket";
-const socket = new W3CWebSocket('ws://127.0.0.1:5000');
 
 const Subscriptions = props => {
   const classes = useStyles()
-
-  const [userName, setUserName] = useState("MSS")
-  const [message, setMessage] = useState("")
-  const [messages, setMessages] = useState([{}])
-
-  useEffect(() => {
-    socket.onopen = () => {
-      console.log('WebSocket Client Connected');
-    };
-    socket.onmessage = (message) => { 
-      let data = JSON.parse(message.data)
-      console.log(messages)
-      console.log(data)    
-      setMessages([...messages, ...data])     
-    };
-  })
+  let messages = props.messages
 
   return (
     <Grid item xs={12} sm={12} md={6}>
