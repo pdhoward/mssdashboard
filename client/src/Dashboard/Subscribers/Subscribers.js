@@ -54,8 +54,7 @@ const Products = props => {
                     {m.name}
                   </TableCell>
                   <TableCell align="right">{m.plan}</TableCell>
-                  <TableCell align="right">{m.Location}</TableCell>
-                  <TableCell align="right">{m.price}</TableCell>
+                  <TableCell align="right">{m.location}</TableCell>                  
                   <TableCell align="right">
                     <p>{dayjs(m.timestamp).format("h:mm:ss a")}</p>
                   </TableCell>

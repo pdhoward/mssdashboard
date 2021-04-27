@@ -102,6 +102,15 @@ process.on('uncaughtException', function (er) {
         subscriber[0].name = `${subscriber[0].firstName} ${subscriber[0].lastName}`
         subscriber[0].plan = plans[Math.floor(Math.random() * plans.length)]
         subscriber[0].location = `${subscriber[0].city}, ${subscriber[0].state}`
+      
+        // sockets
+        wss.clients.forEach((client) => {      
+          if (client.readyState === 1) {
+              client.send(JSON.stringify(subscriber))
+          }
+        })
+      
+      
       }, int)
     }
 

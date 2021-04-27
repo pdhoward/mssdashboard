@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [userName, setUserName] = useState("MSS")
   const [message, setMessage] = useState("")
   const [product, setProduct] = useState([])
-  const [subscriber, setsubscriber] = useState([])
+  const [subscriber, setSubscriber] = useState([])
 
   useEffect(() => {
     socket.onopen = () => {
