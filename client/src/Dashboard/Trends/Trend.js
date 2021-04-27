@@ -11,11 +11,14 @@ import {
   LinearProgress,
 } from '@material-ui/core'
 import { Timeline as IconTimeline, MoreVert as IconMoreVert } from '@material-ui/icons'
-import { Line } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 
 import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 
-const Subscriptions = props => {
+const Trend = props => {
+
+  let {data, options, trends} = props
+  console.log(trends)
   const classes = useStyles()
 
   return (
@@ -28,22 +31,19 @@ const Subscriptions = props => {
             <IconMoreVert />
           </IconButton>
         }
-        title="Subscriptions"
+        title="Brand Aggregate Sales"
       />
       <CardContent className={classes.cardContent}>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={8} md={9} className={classes.chartBox}>
             <div className={classes.chartContainer}>
               <div className={classes.chart}>
-                <Line
-                  data={subscriptionsHistoryChart.data}
-                  options={subscriptionsHistoryChart.options}
-                />
+                <Bar data={data} options={options} />
               </div>
             </div>
           </Grid>
           <Grid item xs={12} sm={4} md={3} className={classes.ratingBox}>
-            {subscriptionsItems.map(({ name, ratio, value }) => (
+            {trends.map(({ name, ratio, value }) => (
               <div key={name}>
                 <Grid container>
                   <Grid item xs>
@@ -78,7 +78,7 @@ const Subscriptions = props => {
   )
 }
 
-Subscriptions.propTypes = {}
+Trend.propTypes = {}
 
 const useStyles = makeStyles(theme => ({
   cardHeader: {
@@ -139,4 +139,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default Subscriptions
+export default Trend

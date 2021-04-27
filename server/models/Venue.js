@@ -7,7 +7,7 @@ const venueSchema = new mongoose.Schema({
         monitors: Array,
         location: Object,
         address: Object,
-        emterprise: Array,
+        enterprise: Array,
         market: Array,
         geography: Array,
         lifemode: Array,

@@ -7,13 +7,14 @@
 const express =                 require('express')
 const cors =                    require('cors')
 const { createServer } =        require('http')
-const {kafka,  
+const {kafka,
+      fetchBrand, 
       fetchRandomTag,
       fetchRandomSubscriber} =  require('../controllers')
 const path =                    require('path')
 const transport =               require('../config/gmail')
 const { g, b, gr, r, y } =      require('../console');
-
+const {brands} =                require('../data')
 const app = express()
 const server = createServer(app)
 
@@ -84,12 +85,14 @@ process.on('uncaughtException', function (er) {
         // }
             
         // MOCK   
-        let tag = await fetchRandomTag()    
+        let tag = await fetchRandomTag()  
+        let brand = brands[Math.floor(Math.random() * brands.length)]  
         
         x++
         tag[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
         tag[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-        tag[0].seq = x     
+        tag[0].seq = x
+        tag[0].brand = brand
       
         // sockets
         wss.clients.forEach((client) => {      
@@ -100,7 +103,7 @@ process.on('uncaughtException', function (er) {
         let subscriber = await fetchRandomSubscriber() 
         
         subscriber[0].name = `${subscriber[0].firstName} ${subscriber[0].lastName}`
-        subscriber[0].plan = plans[Math.floor(Math.random() * plans.length)]
+        subscriber[0].plan = plans[Math.floor(Math.random() * plans.length)]   
         subscriber[0].location = `${subscriber[0].city}, ${subscriber[0].state}`
       
         // sockets

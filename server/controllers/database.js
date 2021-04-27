@@ -2,6 +2,7 @@ const {conn} =              require('../db')
 const subscriberSchema = 	require('../models/Subscriber.js')
 const tagSchema = 	        require('../models/Tag.js')
 const venueSchema = 	    require('../models/Venue.js')
+const brandSchema =         require('../models/Brand.js')
 const { g, b, gr, r, y } =  require('../console')
 
 ///////////////////////////////////
@@ -22,6 +23,16 @@ const findVenue = (venue) => {
         let token = venue       
         let doc = await Venue.findOne({monitors: token }).lean()                   
         resolve(doc)      
+    })
+}
+
+const fetchBrand = (brand) => {
+    return new Promise(async (resolve, reject) => {      
+		let db = await conn(url)		
+		let Brand = db.model('Brand', brandSchema)
+        let id = brand      
+        let doc = await Brand.findOne({brandid: id }).lean()                   
+        resolve(doc) 
     })
 }
 
@@ -102,6 +113,7 @@ const fetchRandomSubscriber = () => {
 }
 module.exports = {    
     findVenue,
+    fetchBrand,
     findSubscriberAndUpdate,   
     fetchStoreSample,
     fetchTagSample,

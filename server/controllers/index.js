@@ -1,6 +1,7 @@
 const {auth} =           	require('./auth')
 const {kafka} =             require('./kafka')
 const {findVenue,
+       fetchBrand,
        findSubscriberAndUpdate,   
        fetchStoreSample,
        fetchTagSample,
@@ -13,6 +14,7 @@ module.exports = {
 	auth,
        kafka,
 	findVenue,
+       fetchBrand,
        findSubscriberAndUpdate,   
        fetchStoreSample,
        fetchTagSample,
