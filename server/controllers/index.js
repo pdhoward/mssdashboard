@@ -4,7 +4,8 @@ const {findVenue,
        findSubscriberAndUpdate,   
        fetchStoreSample,
        fetchTagSample,
-       fetchSubscribers} =  require('./database')
+       fetchSubscribers,
+       fetchRandomTag } =   require('./database')
 
 
 module.exports = {
@@ -14,5 +15,6 @@ module.exports = {
        findSubscriberAndUpdate,   
        fetchStoreSample,
        fetchTagSample,
-       fetchSubscribers
+       fetchSubscribers,
+       fetchRandomTag
   }

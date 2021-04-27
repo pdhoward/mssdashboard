@@ -7,6 +7,8 @@
 const express =               require('express')
 const cors =                  require('cors')
 const { createServer } =      require('http')
+const {kafka,  
+      fetchRandomTag} =       require('../controllers')
 const path =                  require('path')
 const transport =             require('../config/gmail')
 const { g, b, gr, r, y } =    require('../console');
@@ -79,19 +81,18 @@ process.on('uncaughtException', function (er) {
         //   console.log(e)
         // }
             
-        // MOCK
-        let tag = {}
-        x++
-        tag.unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
-        tag.price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-        tag.seq = x
-        tag.name='New Product'
-        tag.timestamp = Date.now()
+        // MOCK   
+        let tag = await fetchRandomTag()    
         
+        x++
+        tag[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
+        tag[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+        tag[0].seq = x     
+      
         // sockets
         wss.clients.forEach((client) => {      
           if (client.readyState === 1) {
-              client.send(JSON.stringify([tag]))
+              client.send(JSON.stringify(tag))
           }
         })
 

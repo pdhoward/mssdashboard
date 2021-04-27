@@ -35,13 +35,10 @@ module.exports = (url, dbName) => {
       conn = await cache.get(api)  
 
       // if connection is in cache, will reuse it, otherwise create it
-      if (conn) {
-        log.info('Reusing existing MongoDB connection')             
+      if (conn) {                     
         resolve(conn)                 
       }
-      else {
-        log.info('Creating new connection for ' + api);
-       
+      else {      
         const conn = await mongoose.createConnection(api, dbOptions)
         await cache.set(api, conn) 
         log.info(`Mongo connected at ${api}`)
