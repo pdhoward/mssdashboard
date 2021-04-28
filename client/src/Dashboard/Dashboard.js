@@ -150,7 +150,7 @@ const Dashboard = () => {
   return (
     <BasePageContainer>
       <BasePageToolbar
-        title={'Dashboard'}
+        title={'Dashboard Demonstrating Kafka Streaming Platform'}
         actionsComponent={DashboardActions}
       ></BasePageToolbar>
       <Grid container spacing={3}>

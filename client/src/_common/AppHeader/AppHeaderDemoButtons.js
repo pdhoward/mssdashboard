@@ -25,7 +25,7 @@ const AppHeaderDemoButtons = props => {
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="View open issues">
+      <Tooltip title="Let us know if you see an issue">
         <Button
           size="small"
           variant="outlined"
@@ -37,7 +37,7 @@ const AppHeaderDemoButtons = props => {
           <span className={classes.demoName}>Open an Issue</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Contribute! Submit a pull request">
+      <Tooltip title="Contribute! Let us know what you'd like to see">
         <Button
           size="small"
           variant="outlined"
@@ -46,7 +46,7 @@ const AppHeaderDemoButtons = props => {
           href="https://github.com/pdhoward/mssdashboard/pulls"
         >
           <Build className={classes.demoIcon} />
-          <span className={classes.demoName}>Submit Designs or Code</span>
+          <span className={classes.demoName}>Submit Design Ideas</span>
         </Button>
       </Tooltip>
     </div>

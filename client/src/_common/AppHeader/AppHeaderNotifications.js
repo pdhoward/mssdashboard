@@ -19,7 +19,7 @@ const notifications = [
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
     },
     title: 'Thank You',
-    content: " — This commerce platform is plazing fast. Thank you MSS …",
+    content: " — This commerce platform is blazing fast. Thank you MSS …",
   },
   {
     user: {
@@ -27,7 +27,7 @@ const notifications = [
       image: 'https://material-ui.com//static/images/avatar/2.jpg',
     },
     title: 'Migration',
-    content: " — We are delighted with the Brand sales, and would like to board more products …",
+    content: " — We are delighted with the real-time Brand analytics, and would like to board more products …",
   },
   {
     user: {
@@ -35,7 +35,7 @@ const notifications = [
       image: 'https://material-ui.com//static/images/avatar/3.jpg',
     },
     title: 'Conversion',
-    content: '- Please contact me about the COBOL to Java test results ....',
+    content: '- Please contact us about modernizing more of our applications ....',
   },
 ]
 
