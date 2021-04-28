@@ -105,7 +105,15 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     position: 'relative',
     paddingBottom: '25%',
-    minHeight: 440,
+    [theme.breakpoints.down("xs")]: {
+      minHeight: 200      
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      minHeight: 300      
+    },
+    "@media (min-width: 1280px)": {
+      minHeight: 440      
+    }
   },
   chart: {
     position: 'absolute',
