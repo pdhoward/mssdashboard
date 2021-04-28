@@ -105,7 +105,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     position: 'relative',
     paddingBottom: '25%',
-    minHeight: 240,
+    minHeight: 440,
   },
   chart: {
     position: 'absolute',
