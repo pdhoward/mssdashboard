@@ -66,7 +66,7 @@ const SidebarNav = props => {
       ],
     },
     {
-      name: 'Administration',
+      name: 'Configuration',
       Icon: IconAdmin,
       items: [
         {
@@ -80,28 +80,19 @@ const SidebarNav = props => {
           Icon: IconGroup,
         },
       ],
-    },
-    {
-      name: 'Search',
-      link: '/search',
-      Icon: IconSearch,
-    },
+    },    
     {
       name: 'Settings',
       link: '/settings',
       Icon: IconSettings,
-    },
-    {
-      name: 'Error',
-      link: '/error',
-      Icon: IconError,
-    },
+    }
+    
   ]
 
   const itemsTheme = [
     {
-      name: 'Why Modular?',
-      link: '/demo/features',
+      name: 'Why MSS?',
+      link: '/demo/feature',
       Icon: IconNewReleases,
       IconClassName: classes.iconFeatures,
     },
@@ -110,15 +101,9 @@ const SidebarNav = props => {
       link: '/demo/docs',
       Icon: IconLibraryBooks,
       IconClassName: classes.iconDocs,
-    },
+    },    
     {
-      name: 'Supporters',
-      link: '/demo/supporters',
-      Icon: IconStars,
-      IconClassName: classes.iconSupporters,
-    },
-    {
-      name: 'Discuss',
+      name: 'Blog',
       link: '/demo/discuss',
       Icon: IconQuestionAnswer,
       IconClassName: classes.iconDiscuss,
