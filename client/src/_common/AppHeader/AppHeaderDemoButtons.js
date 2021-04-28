@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import Button from '@material-ui/core/Button'
 import IconCode from '@material-ui/icons/Code'
-import IconStar from '@material-ui/icons/Star'
-import IconDownload from '@material-ui/icons/GetApp'
+import Build from '@material-ui/icons/Build'
+import BugReport from '@material-ui/icons/BugReport'
 
 const AppHeaderDemoButtons = props => {
   const classes = useStyles(props)
@@ -19,34 +19,34 @@ const AppHeaderDemoButtons = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react"
+          href="https://github.com/pdhoward/mssdashboard"
         >
           <IconCode className={classes.demoIcon} />
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="View all releases">
+      <Tooltip title="View open issues">
         <Button
           size="small"
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react/releases"
+          href="https://github.com/pdhoward/mssdashboard/issues"
         >
-          <IconDownload className={classes.demoIcon} />
-          <span className={classes.demoName}>Download</span>
+          <BugReport className={classes.demoIcon} />
+          <span className={classes.demoName}>Open an Issue</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Star the project on the GitHub!">
+      <Tooltip title="Contribute! Submit a pull request">
         <Button
           size="small"
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react/stargazers"
+          href="https://github.com/pdhoward/mssdashboard/pulls"
         >
-          <IconStar className={classes.demoIcon} />
-          <span className={classes.demoName}>Rate</span>
+          <Build className={classes.demoIcon} />
+          <span className={classes.demoName}>Submit Designs or Code</span>
         </Button>
       </Tooltip>
     </div>

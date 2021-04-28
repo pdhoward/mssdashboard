@@ -22,7 +22,7 @@ const AppHeaderProfile = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const user = {
-    firstName: 'Gevorg',
+    firstName: 'CEO',
   }
 
   if (!user) {
@@ -50,10 +50,10 @@ const AppHeaderProfile = () => {
       >
         <Avatar
           className={classes.profileAvatar}
-          alt={user.firstName}
-          src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=40"
+          alt={'CEO'}
+          src="https://randomuser.me/api/portraits/lego/2.jpg"
         />
-        <span className={classes.profileName}>{user.firstName}</span>
+        <span className={classes.profileName}>{'CEO'}</span>
         <IconArrowDropDown />
       </IconButton>
       <Menu

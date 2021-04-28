@@ -15,27 +15,27 @@ import Typography from '@material-ui/core/Typography'
 const notifications = [
   {
     user: {
-      name: 'Remy Sharp',
+      name: 'Juan Carlos',
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
     },
-    title: 'New Order',
-    content: " — I'll be in your neighborhood doing errands this…",
+    title: 'Thank You',
+    content: " — This commerce platform is plazing fast. Thank you MSS …",
   },
   {
     user: {
-      name: 'Travis Howard',
+      name: 'Tobia Schneider',
       image: 'https://material-ui.com//static/images/avatar/2.jpg',
     },
-    title: 'New Signup',
-    content: " — Wish I could come, but I'm out of town this…",
+    title: 'Migration',
+    content: " — We are delighted with the Brand sales, and would like to board more products …",
   },
   {
     user: {
-      name: 'Oui Oui',
+      name: 'Isla Smith',
       image: 'https://material-ui.com//static/images/avatar/3.jpg',
     },
-    title: 'Refund Request',
-    content: 'please provide me a refund for my order',
+    title: 'Conversion',
+    content: '- Please contact me about the COBOL to Java test results ....',
   },
 ]
 
