@@ -15,7 +15,7 @@ const Logo = props => {
 
   return (
     <div>
-      <AppBar className="nav-bar" position="static" color="white">
+      <AppBar className="nav-bar" position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>          
             <img src="./msslogosmall.png" alt="bug" className={classes.logo}  />         
         </Toolbar>
