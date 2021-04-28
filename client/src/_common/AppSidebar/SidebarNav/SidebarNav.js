@@ -12,8 +12,8 @@ import IconError from '@material-ui/icons/Error'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import IconStars from '@material-ui/icons/Stars'
-import IconNewReleases from '@material-ui/icons/NewReleases'
-import IconSettings from '@material-ui/icons/Settings'
+import IconGlobe from '@material-ui/icons/Language'
+import IconSettings from '@material-ui/icons/Business'
 import IconGroup from '@material-ui/icons/Group'
 import IconPreson from '@material-ui/icons/Person' //
 
@@ -82,8 +82,8 @@ const SidebarNav = props => {
       ],
     },    
     {
-      name: 'Settings',
-      link: '/settings',
+      name: 'Learn More - Modernize Your Business',
+      link: '/modernize',
       Icon: IconSettings,
     }
     
@@ -92,19 +92,19 @@ const SidebarNav = props => {
   const itemsTheme = [
     {
       name: 'Why MSS?',
-      link: '/demo/feature',
-      Icon: IconNewReleases,
+      link: '/about',
+      Icon: IconGlobe,
       IconClassName: classes.iconFeatures,
     },
     {
       name: 'Docs',
-      link: '/demo/docs',
+      link: '/docs',
       Icon: IconLibraryBooks,
       IconClassName: classes.iconDocs,
     },    
     {
       name: 'Blog',
-      link: '/demo/discuss',
+      link: '/blog',
       Icon: IconQuestionAnswer,
       IconClassName: classes.iconDiscuss,
     },

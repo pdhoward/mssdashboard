@@ -9,8 +9,8 @@ import { generateTrendChartData } from './data'
 
 const numbers = [
   {
-    name: 'Monthly Revenue',
-    value: '24350$',
+    name: 'Product Sales',
+    value: '$22300',
     change: '+13%',
     trend: 'positive',
     chart: generateTrendChartData({
@@ -21,7 +21,7 @@ const numbers = [
     }),
   },
   {
-    name: 'Total Users',
+    name: 'Total Subscribers',
     value: 48205,
     change: '+10%',
     trend: 'positive',
@@ -32,10 +32,10 @@ const numbers = [
     }),
   },
   {
-    name: 'Subscriptions',
+    name: 'Total Platinum',
     value: 139,
-    change: '-5%',
-    trend: 'negative',
+    change: '+5%',
+    trend: 'positive',
     chart: generateTrendChartData({
       name: 'Subscriptions',
       from: 139,
@@ -44,14 +44,14 @@ const numbers = [
     }),
   },
   {
-    name: 'Monthly Churn',
-    value: 13,
-    change: '-10%',
+    name: 'Total Gold',
+    value: 130,
+    change: '+10%',
     trend: 'positive',
     chart: generateTrendChartData({
       name: 'Monthly Churn',
       from: 13,
-      to: Math.random(13 / 1.1),
+      to: Math.random(130 / 1.1),
       length: 15,
     }),
   },
