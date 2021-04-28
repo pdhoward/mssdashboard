@@ -10,38 +10,38 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Typography variant="body2" color="textSecondary" align="left">
-        {`Modular Material Admin React`}{' '}
+        {`MSS International`}{' '}
         <Link
           color="primary"
-          href="https://github.com/modularcode/modular-material-admin-react/releases"
+          href="https://www.mssint.com/"
         >
           v{pkg.version}
         </Link>
         {' | '}
         <Link
           color="primary"
-          href="https://github.com/modularcode/modular-material-admin-react/blob/master/LICENSE"
+          href="https://github.com/pdhoward/mssdashboard/blob/main/LICENSE"
         >
           MIT License
         </Link>
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="primary" href="https://github.com/modularcoder">
+        <Link color="primary" href="https://github.com/pdhoward">
           GitHub
         </Link>
         {' | '}
-        <Link color="primary" href="https://www.linkedin.com/in/modularcoder/">
+        <Link color="primary" href="https://www.linkedin.com/company/mss-international-gmbh/about/">
           LinkedIn
         </Link>
       </Typography>
       <Typography variant="body2" color="textSecondary" align="right">
         {'Built with '}
-        <Link color="primary" href="https://material-ui.com/">
-          Material-UI
+        <Link color="primary" href="https://www.redhat.com/en/blog/introducing-red-hat-openshift-streams-apache-kafka">
+          KAFKA
         </Link>
         {' by '}
-        <Link color="primary" href="https://twitter.com/modularcoder">
-          Gevorg Harutyunyan
+        <Link color="primary" href="https://www.mssint.com/">
+          MSS International
         </Link>
       </Typography>
     </footer>
