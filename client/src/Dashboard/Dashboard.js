@@ -34,13 +34,16 @@ const genData = () => {
   let dataset = brandArray.map(b => b[1])
   let stateArray = stateCount()
   let cnt = 0
- 
-  stateTrends = stateArray.map(s => cnt = cnt + s[1])
-                          .map((f, i) => {
+   
+  stateTrends = stateArray.map(s => {
+                               cnt = cnt + s[1]
+                               return s
+                           })
+                          .map((f, i) => {                            
                             let stateObj = {}                                                            
                             stateObj.state = f[0]
                             stateObj.value = f[1]
-                            stateObj.ratio = f[1] / cnt
+                            stateObj.ratio = ((f[1] / cnt) * 100).toFixed(2)
                             return stateObj                                                     
                           })
                           .filter((m, i) => i < 5)
@@ -126,8 +129,7 @@ const Dashboard = () => {
         }      
       }
       // subscriber state
-      if (data[0].type == 'subscriber') {
-
+      if (data[0].type == 'subscriber') {        
         if (isNaN(topStates[data[0].state])) {
           topStates[data[0].state] = 1
         } else {

@@ -31,7 +31,7 @@ const Trend = props => {
             <IconMoreVert />
           </IconButton>
         }
-        title="Brand Aggregate Sales"
+        title="Real-time Aggregate Sales - by Brand and State"
       />
       <CardContent className={classes.cardContent}>
         <Grid container spacing={4}>
@@ -43,11 +43,11 @@ const Trend = props => {
             </div>
           </Grid>
           <Grid item xs={12} sm={4} md={3} className={classes.ratingBox}>
-            {trends.map(({ name, ratio, value }) => (
-              <div key={name}>
+            {trends.map(({ state, ratio, value }, i) => (
+              <div key={i}>
                 <Grid container>
                   <Grid item xs>
-                    <Typography variant="body1">{name}</Typography>
+                    <Typography variant="body1">{state}</Typography>
                   </Grid>
                   <Grid item xs className={classes.ratingItemValueBox}>
                     <Typography
