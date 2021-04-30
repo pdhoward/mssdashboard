@@ -18,7 +18,7 @@ const {brands} =                require('../data')
 const app = express()
 const server = createServer(app)
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 ////////////////////////////////////////
 //////middleware and static routes/////
@@ -35,6 +35,7 @@ console.log('isDev: ' + isDev);
 ////////////////////////////////////////////////////////////////
 
 const {wss} = require('../events');
+const {kafkaconsumer} = require('../events')
 
 server.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, (socket) => {
@@ -71,54 +72,52 @@ process.on('uncaughtException', function (er) {
 //////////////   STREAM         //////////////////
 /////////////////////////////////////////////////
     const plans = ['Platinum', 'Gold', 'Silver', 'Bronze', 'Basic']
-    const randomStream = (int) => {
-      let id
-      let x = 0
-      id = setInterval(async function() {
-          
-        // // kafka consumer - 
-        // try {
-        //   let result = await kafka(producer, tag)          
-        //   console.log(result, x)
-        // } catch (e) {
-        //   console.log(e)
-        // }
-            
-        // MOCK   
-        let tag = await fetchRandomTag()  
-        let brand = brands[Math.floor(Math.random() * brands.length)]  
-        
-        x++
-        tag[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
-        tag[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-        tag[0].seq = x
-        tag[0].brand = brand
-      
-        // sockets
-        wss.clients.forEach((client) => {      
-          if (client.readyState === 1) {
-              client.send(JSON.stringify(tag))
-          }
-        })
-        let subscriber = await fetchRandomSubscriber() 
-        
-        subscriber[0].name = `${subscriber[0].firstName} ${subscriber[0].lastName}`
-        subscriber[0].plan = plans[Math.floor(Math.random() * plans.length)]   
-        subscriber[0].location = `${subscriber[0].city}, ${subscriber[0].state}`
-      
-        // sockets
-        wss.clients.forEach((client) => {      
-          if (client.readyState === 1) {
-              client.send(JSON.stringify(subscriber))
-          }
-        })
-      
-      
-      }, int)
-    }
+    let x = 0
+    let z = 2
+    let consumer = {}
 
-    randomStream(1000)   
- 
+    const init = async () => {
+      consumer = await kafkaconsumer()
+
+      //  consumer.subscribe(["sales"]);
+
+      //  consumer.consume()
+       
+      //  consumer.on("data", function (data) {
+      //    console.log('--------------start consumer-----')
+      //     // you will start receiving message here once the producer successfully produces the message here
+          
+      //     const intoString = data.value.toString();
+      //     const message = JSON.parse(intoString); 
+          
+      //     console.log(message)
+         
+        
+      //     if (message[0].type =='tag') {
+      //       x++
+      //       let brand = brands[Math.floor(Math.random() * brands.length)]  
+      //       message[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
+      //       message[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+      //       message[0].seq = x
+      //       message[0].brand = brand
+      //     } else {
+      //       z++
+      //       message[0].seq = z
+      //       message[0].name = `${message[0].firstName} ${message[0].lastName}`
+      //       message[0].plan = plans[Math.floor(Math.random() * plans.length)]   
+      //       message[0].location = `${message[0].city}, ${message[0].state}`
+      //     }       
+      //     // sockets
+      //     wss.clients.forEach((client) => {      
+      //       if (client.readyState === 1) {
+      //           client.send(JSON.stringify(message))
+      //       }
+      //     })         
+      // })
+     }
+    
+    init()
+    
  /////////////////////////////////////////////////
  ///// Register and Config Routes ///////////////
  ///////////////////////////////////////////////

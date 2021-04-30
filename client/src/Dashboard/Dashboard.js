@@ -8,20 +8,20 @@ import KeyNumbers from './KeyNumbers'
 import ProductsRecent from './ProductsRecent'
 import Subscribers from './Subscribers'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
-const socket = new W3CWebSocket('ws://127.0.0.1:5000');
+
+let socketurl = ''
+
+if (location.hostname == 'localhost' ) {  
+  socketurl = `ws://${location.host}`
+} else {  
+  socketurl = `wss://msskafka.onrender.com`
+}
+
+const socket = new W3CWebSocket(socketurl);
 
 let topStates = {}
 
 let topBrands = {}
-
-
-const subscriptionsItems = [
-  { name: 'GitHub', ratio: 55.3, value: Math.round(55.3 * 144) },
-  { name: 'MaterialUI', ratio: 25.7, value: Math.round(25.7 * 144) },
-  { name: 'Google', ratio: 15.6, value: Math.round(15.6 * 144) },
-  { name: 'ModularCode', ratio: 8.4, value: Math.round(8.4 * 144) },
-  { name: 'GH', ratio: 5.5, value: Math.round(5.5 * 144) },
-]
 
 const brandCount = () => Object.entries(topBrands).sort((a, b) => b[1] - a[1])
 const stateCount = () => Object.entries(topStates).sort((a, b) => b[1] - a[1])
