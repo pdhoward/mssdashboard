@@ -18,7 +18,7 @@ import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 const Trend = props => {
 
   let {data, options, trends} = props
-  console.log(trends)
+ 
   const classes = useStyles()
 
   return (

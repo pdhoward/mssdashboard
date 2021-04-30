@@ -76,47 +76,63 @@ process.on('uncaughtException', function (er) {
     let z = 2
     let consumer = {}
 
-    const init = async () => {
-      consumer = await kafkaconsumer()
+    const start = () => {
+      return new Promise(async(resolve, reject) => {
+        consumer = await kafkaconsumer() 
+        resolve (consumer)
+      })
+    }
 
-      //  consumer.subscribe(["sales"]);
+    const subscribe = (consumer) => {
+      return new Promise(async(resolve, reject) => {
+        consumer.on("ready", function () {
+         
+          consumer.subscribe(["sales"]);
+         
+          setInterval(function () {
+            consumer.consume(1);
+          }, 1000);
+        })
+   
+       consumer.on("data", function (data) {        
+          // you will start receiving message here once the producer successfully produces the message here
 
-      //  consumer.consume()
-       
-      //  consumer.on("data", function (data) {
-      //    console.log('--------------start consumer-----')
-      //     // you will start receiving message here once the producer successfully produces the message here
+          const intoString = data.value.toString();
+          const message = JSON.parse(intoString); 
           
-      //     const intoString = data.value.toString();
-      //     const message = JSON.parse(intoString); 
-          
-      //     console.log(message)
+          console.log(message)
          
         
-      //     if (message[0].type =='tag') {
-      //       x++
-      //       let brand = brands[Math.floor(Math.random() * brands.length)]  
-      //       message[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
-      //       message[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-      //       message[0].seq = x
-      //       message[0].brand = brand
-      //     } else {
-      //       z++
-      //       message[0].seq = z
-      //       message[0].name = `${message[0].firstName} ${message[0].lastName}`
-      //       message[0].plan = plans[Math.floor(Math.random() * plans.length)]   
-      //       message[0].location = `${message[0].city}, ${message[0].state}`
-      //     }       
-      //     // sockets
-      //     wss.clients.forEach((client) => {      
-      //       if (client.readyState === 1) {
-      //           client.send(JSON.stringify(message))
-      //       }
-      //     })         
-      // })
-     }
+          if (message[0].type =='tag') {
+            x++
+            let brand = brands[Math.floor(Math.random() * brands.length)]  
+            message[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
+            message[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+            message[0].seq = x
+            message[0].brand = brand
+          } else {
+            z++
+            message[0].seq = z
+            message[0].name = `${message[0].firstName} ${message[0].lastName}`
+            message[0].plan = plans[Math.floor(Math.random() * plans.length)]   
+            message[0].location = `${message[0].city}, ${message[0].state}`
+          }       
+          // sockets
+          wss.clients.forEach((client) => {      
+            if (client.readyState === 1) {
+                client.send(JSON.stringify(message))
+            }
+          })         
+        })        
+      })
+    }
+
+   const processnow = async() => {
+     let consumer = await start()
+     await subscribe(consumer)
+   }
     
-    init()
+   processnow()
     
  /////////////////////////////////////////////////
  ///// Register and Config Routes ///////////////

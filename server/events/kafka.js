@@ -15,10 +15,9 @@
  //basic connection configuration for producer
 
  let apikey = process.env.IBM_KAFKA_APIKEY
- console.log(apikey)
  
- //exports.kafka = () => {
- //   return new Promise(async(resolve, reject)=> {
+ exports.kafka = () => {
+   return new Promise(async(resolve, reject)=> {
       const consumer = new Kafka.KafkaConsumer({
           "group.id": "kafka-testTopic",
           //"metadata.broker.list": "broker-0-1gjrqrlglw3sdz07.kafka.svc08.us-south.eventstreams.cloud.ibm.com:9093", 
@@ -31,37 +30,35 @@
           "sasl.mechanism":"PLAIN",  
           "broker.version.fallback": "0.10.0"
          }, {});
-    
-    consumer
-      .on("ready", function () {
-      // Subscribe to the  topic named testTopic
-      // This makes subsequent consumes read from that topic.
-      consumer.subscribe(["sales"]);
 
-      // Read one message every 1000 milliseconds
+      //   consumer.on("ready", function () {
+         
+      //     consumer.subscribe(["sales"]);
+         
+      //     setInterval(function () {
+      //       consumer.consume(1);
+      //     }, 1000);
+      //   })
+   
+      //  consumer.on("data", function (data) {        
+      //     // you will start receiving message here once the producer successfully produces the message here
 
-      setInterval(function () {
-        consumer.consume(3);
-      }, 1000);
-      })
+      //     const intoString = data.value.toString();
+      //     const message = JSON.parse(intoString); 
+          
+      //     console.log(message)
+        
+      //  })
+   
+      consumer.on("error", function (err) {
+        console.log("err", err);
+        });
 
-    .on("data", function (data) {
-      // you will start receiving message here once the producer successfully produces the message here
-      console.log("Consumer message will be seen below:");
-      //console.log(data, "Consumed message");
-
-      const intoString = data.value.toString();
-      const jsonData = JSON.parse(intoString);
-      console.log(jsonData, "Message in json");
-      })
-    .on("error", function (err) {
-      console.log("err", err);
+      // initiate the consumer connection
+      consumer.connect(null, function (err, metadata) {
+        if (err) console.log(err)
+        console.log(b("Consumer connected"))
+        resolve({consumer})
       });
-
-    // initiate the consumer connection
-    consumer.connect(null, function () {
-      console.log("Consumer connected");
-      });
-module.exports = consumer
-  //   })
-  // }
+    })
+  }

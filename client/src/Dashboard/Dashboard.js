@@ -12,7 +12,7 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 let socketurl = ''
 
 if (location.hostname == 'localhost' ) {  
-  socketurl = `ws://${location.host}`
+  socketurl = `ws://${'127.0.0.1:4000'}`
 } else {  
   socketurl = `wss://msskafka.onrender.com`
 }
