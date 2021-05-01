@@ -9,11 +9,6 @@
 /coverage
 
 # builds
-build
-dist
-.rpt2_cache
-storybook-static
-.cache
 
 
 # misc

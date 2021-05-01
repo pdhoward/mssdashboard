@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Demo/Chat.css"],"names":[],"mappings":"AAAA,SACI,iBAAkB,CAClB,WAAY,CACZ,YAAa,CACb,UAAW,CACX,WACF,CAEA,MACE,WACF","file":"main.2e3019a5.chunk.css","sourcesContent":[".wrapper {\r\n    position: absolute;\r\n    width: 300px;\r\n    height: 400px;\r\n    right: 10px;\r\n    bottom: 10px;\r\n  }\r\n  \r\n  .card {\r\n    height: 100%;\r\n  }"]}
