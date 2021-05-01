@@ -82,26 +82,17 @@ process.on('uncaughtException', function (er) {
         resolve (consumer)
       })
     }
-
     const subscribe = (consumer) => {
-      return new Promise(async(resolve, reject) => {
-        consumer.on("ready", function () {
-         
-          consumer.subscribe(["sales"]);
-         
-          setInterval(function () {
-            consumer.consume(1);
-          }, 1000);
-        })
+      return new Promise((resolve, reject) => {     
+        consumer.subscribe(["sales"]);        
+        setInterval(function () {
+          consumer.consume(1);
+        }, 1000);    
    
-       consumer.on("data", function (data) {        
+       consumer.on("data", (data) => {        
           // you will start receiving message here once the producer successfully produces the message here
-
           const intoString = data.value.toString();
-          const message = JSON.parse(intoString); 
-          
-          console.log(message)
-         
+          const message = JSON.parse(intoString);         
         
           if (message[0].type =='tag') {
             x++
@@ -127,8 +118,8 @@ process.on('uncaughtException', function (er) {
       })
     }
 
-   const processnow = async() => {
-     let consumer = await start()
+   const processnow = async() => {    
+     let consumer = await start()     
      await subscribe(consumer)
    }
     

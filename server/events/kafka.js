@@ -31,33 +31,19 @@
           "broker.version.fallback": "0.10.0"
          }, {});
 
-      //   consumer.on("ready", function () {
-         
-      //     consumer.subscribe(["sales"]);
-         
-      //     setInterval(function () {
-      //       consumer.consume(1);
-      //     }, 1000);
-      //   })
-   
-      //  consumer.on("data", function (data) {        
-      //     // you will start receiving message here once the producer successfully produces the message here
-
-      //     const intoString = data.value.toString();
-      //     const message = JSON.parse(intoString); 
-          
-      //     console.log(message)
+      consumer.on("ready", function () {
+        console.log(b('Consumer Ready'))
         
-      //  })
+      })     
    
       consumer.on("error", function (err) {
-        console.log("err", err);
+        console.log(r("err", err))
         });
 
       // initiate the consumer connection
       consumer.connect(null, function (err, metadata) {
         if (err) console.log(err)
-        console.log(b("Consumer connected"))
+        console.log(b("Consumer Connected"))
         resolve({consumer})
       });
     })
