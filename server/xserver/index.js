@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////
-////////        Proxy Server ---  STREAMS              ///////
+////////        KAFKA Consumer Server ---              ///////
 //////            mainline processing                 ///////
 //////           c all rights reserved               ///////
 ///////////////////////////////////////////////////////////
@@ -7,13 +7,9 @@
 const express =                 require('express')
 const cors =                    require('cors')
 const { createServer } =        require('http')
-const {kafka,
-      fetchBrand, 
-      fetchRandomTag,
-      fetchRandomSubscriber} =  require('../controllers')
-const path =                    require('path')
+
 const transport =               require('../config/gmail')
-const { g, b, gr, r, y } =      require('../console');
+const { g } =                   require('../console');
 const {brands} =                require('../data')
 const app = express()
 const server = createServer(app)
