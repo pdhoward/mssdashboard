@@ -14,7 +14,7 @@ let socketurl = ''
 if (location.hostname == 'localhost' ) {  
   socketurl = `ws://${'127.0.0.1:4000'}`
 } else {  
-  socketurl = `wss://msskafka.onrender.com`
+  socketurl = `wss://mssdashboard.onrender.com`
 }
 
 const socket = new W3CWebSocket(socketurl);
