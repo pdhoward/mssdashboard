@@ -1,4 +1,4 @@
-const {auth} =           	require('./auth')
+
 const {kafka} =             require('./kafka')
 const {findVenue,
        fetchBrand,
@@ -10,8 +10,7 @@ const {findVenue,
        fetchRandomTag } =   require('./database')
 
 
-module.exports = {
-	auth,
+module.exports = {	
        kafka,
 	findVenue,
        fetchBrand,

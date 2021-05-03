@@ -132,8 +132,6 @@ process.on('uncaughtException', function (er) {
  const header =      express.Router()  
  const test =        express.Router({mergeParams: true})
 
- const userRoutes = require('../routes/auth')
-
  require('../routes/about')(about)
  require('../routes/header')(header)
  require('../routes/test')(test)
@@ -144,12 +142,6 @@ process.on('uncaughtException', function (er) {
 
 app.use(header)
 app.get('/about', about)
-
-////////////////////////////////////////////////////////
-//////////       api routes - streaming       /////////
-//////////////////////////////////////////////////////
-
-app.use("/api/auth", [userRoutes])
 
 
 ///////////////////////////////////
