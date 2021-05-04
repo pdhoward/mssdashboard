@@ -5,7 +5,7 @@ import config from './_config'
 
 import DashboardLayout from './_layouts/DashboardLayout'
 import { Auth } from './Auth'
-import { Administration } from './Administration'
+import { Configuration } from './Configuration'
 import { About } from './About'
 import { Dashboard } from './Dashboard'
 import  Demo  from './Demo'
@@ -19,13 +19,10 @@ const AppRouter = () => (
     <Switch>     
       <Route path="/auth" component={Auth} />
       <Route path="/demo" component={Demo} />
+      <Route path="/configuration" component={Configuration} />
       <RouteWithLayout exact path={`/`} component={Dashboard} layout={DashboardLayout} />
       <RouteWithLayout path={`/about`} component={About} layout={DashboardLayout} />
-      <RouteWithLayout
-        path={`/administration`}
-        component={Administration}
-        layout={DashboardLayout}
-      />     
+         
     </Switch>
   </AppRouterComponent>
 )
