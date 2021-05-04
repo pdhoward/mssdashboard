@@ -26,13 +26,11 @@ export default function Configuration({ match }) {
     <Grid container className={classes.container}>
       <Grid item xs={12} sm={12} md={4} className={classes.formSection}>
         <Box p={2}>
+          <Footer />
           <Redirect exact from={`${match.path}/`} to={`${match.path}/accounts`} />
           <Route path={`${match.path}/accounts`} component={Accounts} />
           <Route path={`${match.path}/users`} component={Users} />
-         
-          <Box mt={8}>
-            <Footer />
-          </Box>
+                
         </Box>
       </Grid>
       <Grid item xs={12} sm={12} md={8} className={classes.introSection}></Grid>

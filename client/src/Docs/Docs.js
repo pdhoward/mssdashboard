@@ -22,10 +22,8 @@ export default function Docs() {
     <Grid container className={classes.container}>
       <Grid item xs={12} sm={12} md={4} className={classes.formSection}>
         <Box p={2}>
-          <Documentation />
-          <Box mt={8}>
-            <Footer />
-          </Box>
+          <Footer />
+          <Documentation />           
         </Box>
       </Grid>
       <Grid item xs={12} sm={12} md={8} className={classes.introSection}></Grid>

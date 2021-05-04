@@ -1,7 +1,7 @@
 const places = [
 	{
 		title: 'MSS International',
-		description: "Helping our clients transform",
+		description: "Coming Soon: Modern Technologies for Cloud Migrations",
 		imageUrl: '/static/analyze2.png',
 		time: 1500,
 	}

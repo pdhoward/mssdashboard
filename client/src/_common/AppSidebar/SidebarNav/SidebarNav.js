@@ -57,11 +57,11 @@ const SidebarNav = props => {
       items: [
         {
           name: 'Profile',
-          link: '/profile/me',
+          link: '/account/profile',
         },
         {
           name: 'Organization',
-          link: '/organization',
+          link: '/account/organization',
         },
       ],
     },

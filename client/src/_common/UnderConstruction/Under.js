@@ -19,8 +19,7 @@ export default function Under() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CssBaseline />  
-      <Header />
+      <CssBaseline /> 
       <PlaceToView />
     </div>
   );

@@ -5,6 +5,7 @@ import config from './_config'
 
 import DashboardLayout from './_layouts/DashboardLayout'
 import { Auth } from './Auth'
+import { Account } from './Account'
 import { Configuration } from './Configuration'
 import { Modernize } from './Modernize'
 import { Docs } from './Docs'
@@ -22,6 +23,7 @@ const AppRouter = () => (
     <Switch>     
       <Route path="/auth" component={Auth} />
       <Route path="/demo" component={Demo} />
+      <Route path="/account" component={Account} />
       <Route path="/configuration" component={Configuration} />
       <Route path="/modernize" component={Modernize} />
       <Route path="/docs" component={Docs} />

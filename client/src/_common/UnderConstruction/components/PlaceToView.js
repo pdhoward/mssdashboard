@@ -6,21 +6,21 @@ import useWindowPosition from '../hook/useWindowPosition';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		minHeight: '100vh',
+		minHeight: '75vh',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		[theme.breakpoints.down("md")]: {
 			flexDirection: 'column',
-		},
-		marginTop: '200px',
-		marginLeft: '200px'
+		},		
+		marginLeft: '400px'
 	},
 }));
 
 export default function PlaceToView() {
 	const classes = useStyles();
-	const checked = useWindowPosition('header');
+	let checked = true
+	//const checked = useWindowPosition('header');
 	return (
 		<div className={classes.root} id="place-to-view">
 			<ImageCard place={places[0]} checked={checked} />		
