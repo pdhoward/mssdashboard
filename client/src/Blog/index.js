@@ -1,8 +1,8 @@
-import Modernize from './Modernize'
+import Blog from './Blog'
 
-const ModernizeModule = {
+const BlogModule = {
   init() {},
 }
-export { Modernize }
+export { Blog }
 
-export default ModernizeModule
+export default BlogModule

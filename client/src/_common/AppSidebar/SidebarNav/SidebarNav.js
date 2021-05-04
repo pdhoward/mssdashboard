@@ -82,7 +82,7 @@ const SidebarNav = props => {
       ],
     },    
     {
-      name: 'Learn More - Modernize Your Business',
+      name: 'Modernize Your Apps',
       link: '/modernize',
       Icon: IconSettings,
     }
